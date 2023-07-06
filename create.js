@@ -1,4 +1,3 @@
-import {db, ref, set} from './firebase.js'
 $(document).ready(()=>{
     $('button').on('click', (e)=>{
         e.preventDefault()
@@ -13,26 +12,30 @@ $(document).ready(()=>{
         ///////////////////////////////////////
         const data = {name:cardName, description:cardDescription, 
             level: cardLevel, point: cardPoint, imageURL:cardImageURL}
-        const cardKey = getRandomKey()
-        set(ref(db, 'Cards/' + cardKey), data)
-        .then(()=>{
-            // console.log('done')
-            window.location.href='cards.html'
-        })
         
-        // localStorage.setItem('card', JSON.stringify(data))
-        
+        localStorage.setItem('card', JSON.stringify(data))
+        window.location.href='cards.html'
     })
 })
 
-const getRandomKey = () => {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const length = 28;
-    let randomStr = "";
-    for (let i = 0; i < length; i++) {
-      const randomNum = Math.floor(Math.random() * characters.length);
-      randomStr += characters[randomNum];
-    }
-    return randomStr;
-  };
+
+
+// const submitBtn = document.querySelector('button')
+// submitBtn.addEventListener('click', (e)=>{
+//     e.preventDefault()
+//     const dataList = document.querySelectorAll('.form-control')
+//     const cardName = dataList[0].value
+//     const cardDescription = dataList[1].value
+//     const cardLevel = dataList[2].value
+//     const cardPoint = dataList[3].value
+//     const cardImageURL = dataList[4].value
+//     // validation
+//     /////////////add code here/////////////
+
+//     ///////////////////////////////////////
+//     const data = {name:cardName, description:cardDescription, 
+//         level: cardLevel, point: cardPoint, imageURL:cardImageURL}
+    
+//     localStorage.setItem('card', JSON.stringify(data))
+//     window.location.href='cards.html'
+// })
